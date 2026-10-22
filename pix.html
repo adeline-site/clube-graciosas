@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pagar com Pix · Clube de Leitura Graciosas</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="img/logo.png">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root{--terra:#B08868;--ink:#17302F;--cream:#F7EFE4;--head:'Poppins',system-ui,sans-serif;--body:'Montserrat',system-ui,sans-serif}
+*{box-sizing:border-box;margin:0}
+body{font-family:var(--body);color:var(--ink);background:var(--terra);line-height:1.6;min-height:100vh;display:grid;place-items:center;padding:1.5rem}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+main{background:var(--cream);max-width:440px;width:100%;padding:2rem 1.6rem;text-align:center;border:1.5px solid var(--ink);display:flex;flex-direction:column;align-items:center;gap:1rem}
+.logo{width:130px}
+h1{font:300 2rem/1.15 var(--head)}
+.preco{font:400 1.6rem var(--head)}
+#qr{width:240px;height:240px;object-fit:contain;background:#fff;border:1px solid rgba(23,48,47,.3)}
+textarea{width:100%;height:6.5rem;font:.8rem/1.4 monospace;padding:.7rem;border:1.5px solid var(--ink);background:#fff;color:var(--ink);resize:none}
+.btn{display:inline-block;font:500 .95rem var(--body);text-decoration:none;padding:.7rem 1.35rem;border:1.5px solid var(--ink);border-radius:999px;background:transparent;color:var(--ink);cursor:pointer}
+.btn.solid{background:var(--ink);color:var(--cream)}
+.btn:hover{opacity:.85}
+.aviso{font-size:.9rem}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<main>
+  <img class="logo" src="img/logo.png" alt="Graciosas">
+  <img id="selo-img" class="logo" style="width:120px" alt="" hidden>
+  <h1 id="titulo">Selo</h1>
+  <p class="preco" id="preco"></p>
+  <div id="pagamento">
+    <p class="aviso">Abra o app do seu banco, escolha Pix e leia o QR Code:</p>
+    <img id="qr" alt="QR Code Pix">
+    <p class="aviso" style="margin-top:1rem">Ou use o Pix copia e cola:</p>
+    <textarea id="codigo" readonly aria-label="Código Pix copia e cola"></textarea>
+    <button class="btn solid" id="copiar" type="button" style="margin-top:.6rem">Copiar código</button>
+  </div>
+  <p id="indisponivel" class="aviso" hidden>O pagamento deste selo ainda não está disponível. Fale com a Adeline pelo WhatsApp.</p>
+  <p class="aviso">Depois de pagar, envie o comprovante para a Adeline.</p>
+  <a class="btn" id="zap" href="https://wa.me/5521983429233" target="_blank" rel="noopener">Enviar comprovante</a>
+  <a class="aviso" href="index.html#selos">Voltar aos selos</a>
+</main>
+
+<script>
+/* Preencha aqui: imagem do QR Code e código copia e cola de cada selo */
+const SELOS = {
+  semente:    { nome: 'Semente',         preco: 'R$ 10,00', qr: 'img/pix-semente.png',    codigo: '00020126520014BR.GOV.BCB.PIX0114+55219834292330212Selo Semente520400005303986540510.005802BR5925Adeline Silva de Oliveira6009SAO PAULO62140510AaZk2pDMRk630486E2' },
+  constancia: { nome: 'Constância',      preco: 'R$ 25,00', qr: 'img/pix-constancia.png', codigo: '00020126550014BR.GOV.BCB.PIX0114+55219834292330215Selo Constância520400005303986540525.005802BR5925Adeline Silva de Oliveira6009SAO PAULO621405107EYyFdUpOJ63044ABB' },
+  graciosa:   { nome: 'Mulher Graciosa', preco: 'R$ 50,00', qr: 'img/pix-graciosa.png',   codigo: '00020126600014BR.GOV.BCB.PIX0114+55219834292330220Selo Mulher Graciosa520400005303986540550.005802BR5925Adeline Silva de Oliveira6009SAO PAULO621405103V5IjCe9056304BA25' }
+};
+
+const id = new URLSearchParams(location.search).get('selo');
+const selo = SELOS[id];
+const $ = x => document.getElementById(x);
+
+if (!selo) {
+  $('titulo').textContent = 'Selo não encontrado';
+  $('pagamento').hidden = true;
+} else {
+  $('titulo').textContent = 'Selo ' + selo.nome;
+  $('preco').textContent = selo.preco;
+  document.title = 'Pix · Selo ' + selo.nome;
+  $('selo-img').src = 'img/selo-' + id + '.png'; $('selo-img').alt = 'Selo ' + selo.nome; $('selo-img').hidden = false;
+  if (!selo.codigo) {
+    $('pagamento').hidden = true;
+    $('indisponivel').hidden = false;
+  } else {
+    $('qr').src = selo.qr;
+    $('codigo').value = selo.codigo;
+  }
+  $('zap').href = 'https://wa.me/5521983429233?text=' + encodeURIComponent('Olá! Segue o comprovante do Selo ' + selo.nome + '.');
+}
+
+$('copiar').addEventListener('click', async () => {
+  const t = $('codigo');
+  try { await navigator.clipboard.writeText(t.value); }
+  catch (e) { t.select(); document.execCommand('copy'); }
+  $('copiar').textContent = 'Código copiado!';
+  setTimeout(() => $('copiar').textContent = 'Copiar código', 2500);
+});
+</script>
+</body>
+</html>

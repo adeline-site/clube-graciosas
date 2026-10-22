@@ -77,6 +77,18 @@ section{padding:clamp(3.5rem,9vw,7rem) clamp(1.25rem,6vw,5rem)}
 .lista li::before{content:"";position:absolute;left:.2rem;top:1.15rem;width:.5rem;height:.5rem;border-radius:50%;background:var(--accent)}
 #beneficios{background:var(--cream)}
 
+/* Selos */
+#selos{background:var(--sand)}
+.selos{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem}
+.selo{border:1.5px solid var(--cor);padding:2rem 1.6rem;display:flex;flex-direction:column;align-items:center;text-align:center;gap:.5rem;background:var(--cream)}
+.selo img{width:170px;height:170px;margin-bottom:.6rem}
+.selo h3{margin:0;color:var(--cor);font-weight:500}
+.selo .frase{font-style:italic}
+.selo .inclui{flex:1;font-size:.95rem}
+.selo .preco{font:300 2.2rem var(--head);margin-top:.4rem}
+.selo .btn{margin-top:.6rem;background:var(--cor);border-color:var(--cor);color:var(--cream)}
+.selo .btn:hover{background:var(--cream);color:var(--cor)}
+
 /* Entrar */
 #entrar{background:var(--terra)}
 #entrar blockquote{font:300 clamp(1.4rem,3vw,2.1rem)/1.35 var(--head);margin-bottom:2rem}
@@ -106,13 +118,15 @@ footer .nome{font-family:var(--script);font-size:2.2rem;line-height:1}
     <p class="assina">Adeline Nogueira</p>
     <p class="intro">O Clube de Leitura Graciosas nasceu com o propósito de formar mulheres que crescem espiritualmente por meio da leitura intencional.</p>
     <nav class="indice" aria-label="Índice do site">
-      <a class="btn solid" href="#agenda">Agenda 2027</a>
+      <a class="btn solid" href="#agenda-2026">Agenda 2026</a>
+      <a class="btn solid" href="#agenda-2027">Agenda 2027</a>
       <a class="btn" href="#missao">Missão</a>
       <a class="btn" href="#visao">Visão</a>
       <a class="btn" href="#valores">Valores</a>
       <a class="btn" href="#publico">Público-alvo</a>
       <a class="btn" href="#como">Como funciona</a>
       <a class="btn" href="#beneficios">Benefícios</a>
+      <a class="btn" href="#selos">Selos do clube</a>
       <a class="btn" href="#entrar">Entrar no grupo</a>
     </nav>
   </div>
@@ -123,7 +137,13 @@ footer .nome{font-family:var(--script);font-size:2.2rem;line-height:1}
 
 <section id="agenda">
   <div class="wrap">
-    <h2>Agenda 2027</h2>
+    <h2 id="agenda-2026">Agenda 2026</h2>
+    <ul class="agenda">
+      <li><span class="mes">Outubro</span><span><span class="tipo">Livro:</span>A Família em Meio à Tormenta</span></li>
+      <li><span class="mes">Novembro</span><span><span class="tipo">Estudo:</span>As Famílias da Bíblia</span></li>
+      <li><span class="mes">Dezembro</span><span><span class="tipo">Estudo:</span>Livro de Tito</span></li>
+    </ul>
+    <h2 id="agenda-2027" style="margin-top:4rem">Agenda 2027</h2>
     <ul class="agenda">
       <li class="recesso"><span class="mes">Janeiro/Fevereiro</span><span><span class="tipo">Recesso</span></span></li>
       <li><span class="mes">Março/Abril</span><span><span class="tipo">Livro:</span>Pijama de Oncinha</span></li>
@@ -181,6 +201,38 @@ footer .nome{font-family:var(--script);font-size:2.2rem;line-height:1}
       </ul>
     </div>
     <div class="forma oval"><img src="img/estante.jpg" alt="Adeline apoiada sobre uma pilha de livros" loading="lazy" style="object-position:50% 25%"></div>
+  </div>
+</section>
+
+<section id="selos">
+  <div class="wrap">
+    <h2>Selos do clube</h2>
+    <div class="selos">
+      <article class="selo" style="--cor:#2B4A2E">
+        <img src="img/selo-semente.png" alt="Selo Semente" loading="lazy">
+        <h3>Semente</h3>
+        <p class="frase">O primeiro passo para cultivar o hábito da leitura.</p>
+        <p class="inclui">Material em PDF</p>
+        <span class="preco">R$ 10,00</span>
+        <a class="btn" href="pix.html?selo=semente">Pagar com Pix</a>
+      </article>
+      <article class="selo" style="--cor:#6B3A22">
+        <img src="img/selo-constancia.png" alt="Selo Constância" loading="lazy">
+        <h3>Constância</h3>
+        <p class="frase">Para quem deseja perseverar na leitura e transformar pequenos passos em um hábito.</p>
+        <p class="inclui">Material em PDF + Brinde</p>
+        <span class="preco">R$ 25,00</span>
+        <a class="btn" href="pix.html?selo=constancia">Pagar com Pix</a>
+      </article>
+      <article class="selo" style="--cor:#7F6128">
+        <img src="img/selo-graciosa.png" alt="Selo Mulher Graciosa" loading="lazy">
+        <h3>Mulher Graciosa</h3>
+        <p class="frase">Uma jornada de crescimento na leitura, na fé e no conhecimento da Palavra de Deus.</p>
+        <p class="inclui">Material impresso + Brinde + Uma surpresa</p>
+        <span class="preco">R$ 50,00</span>
+        <a class="btn" href="pix.html?selo=graciosa">Pagar com Pix</a>
+      </article>
+    </div>
   </div>
 </section>
 
