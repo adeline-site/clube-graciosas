@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Clube de Leitura Graciosas · Adeline Nogueira</title>
+<meta name="description" content="O Clube de Leitura Graciosas nasceu com o propósito de formar mulheres que crescem espiritualmente por meio da leitura intencional.">
+<meta property="og:title" content="Clube de Leitura Graciosas">
+<meta property="og:description" content="Formar mulheres que crescem espiritualmente por meio da leitura intencional.">
+<meta property="og:image" content="img/hero.jpg">
+<link rel="icon" href="img/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Mrs+Saint+Delafield&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--terra:#B08868;--ink:#17302F;--sand:#EBDCCB;--cream:#F7EFE4;--accent:#7A5338;
+--head:'Poppins',system-ui,sans-serif;--body:'Montserrat',system-ui,sans-serif;--script:'Mrs Saint Delafield','Brush Script MT',cursive}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:1rem}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{font-family:var(--body);color:var(--ink);background:var(--cream);line-height:1.7;font-size:1.0625rem}
+img{display:block;max-width:100%}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+h1,h2,h3{font-family:var(--head);font-weight:300;line-height:1.15}
+h2{font-size:clamp(2rem,4.5vw,3.2rem);margin-bottom:1.5rem}
+h3{font-size:1.5rem;font-weight:400;margin-bottom:.8rem}
+section{padding:clamp(3.5rem,9vw,7rem) clamp(1.25rem,6vw,5rem)}
+.wrap{max-width:1080px;margin:0 auto}
+.btn{display:inline-block;font:500 .95rem var(--body);text-decoration:none;padding:.7rem 1.35rem;border:1.5px solid var(--ink);border-radius:999px;transition:background .2s,color .2s}
+.btn:hover{background:var(--ink);color:var(--cream)}
+.btn.solid{background:var(--ink);color:var(--cream)}
+.btn.solid:hover{background:var(--cream);color:var(--ink)}
+
+/* Início */
+.hero{display:grid;grid-template-columns:1.05fr .95fr;min-height:100svh;padding:0;background:var(--terra)}
+.hero-text{padding:clamp(2rem,5vw,4.5rem) clamp(1.25rem,5vw,4.5rem);display:flex;flex-direction:column;justify-content:center;gap:1.4rem}
+.hero .logo{width:150px;opacity:.9}
+.hero h1{font-size:clamp(2.6rem,6vw,4.8rem)}
+.assina{font-family:var(--script);font-size:clamp(2.6rem,5vw,3.6rem);line-height:1;margin-top:-.4rem}
+.hero p.intro{max-width:34rem}
+.indice{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:.4rem}
+.indice .btn{padding:.6rem 1.1rem}
+.hero-foto{position:relative;min-height:60vh}
+.hero-foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 30%}
+
+/* Agenda */
+#agenda{background:var(--cream)}
+.agenda{list-style:none;padding:0;border-top:1.5px solid var(--ink)}
+.agenda li{display:grid;grid-template-columns:minmax(9rem,13rem) 1fr;gap:1rem;padding:1.05rem .2rem;border-bottom:1px solid rgba(23,48,47,.3);align-items:baseline}
+.agenda .mes{font-family:var(--head);font-size:1.2rem}
+.agenda .tipo{color:var(--accent);font-weight:600;margin-right:.4rem}
+.agenda .recesso .tipo{color:var(--ink);opacity:.7}
+.agenda li.destaque{background:var(--sand)}
+
+/* Missão e visão */
+#missao{background:var(--terra)}
+.duo{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(2rem,6vw,5rem);align-items:center}
+.forma{border:1.5px solid var(--ink);overflow:hidden}
+.arco{border-radius:999px 999px 0 0;aspect-ratio:3/4}
+.oval{border-radius:50%;aspect-ratio:4/5}
+.pill{border-radius:999px;aspect-ratio:1/1}
+.forma img{width:100%;height:100%;object-fit:cover}
+.bloco+.bloco{margin-top:2.4rem}
+
+/* Valores */
+#valores{background:var(--ink);color:var(--cream);text-align:center}
+#valores h2{margin-bottom:2.5rem}
+.valores{list-style:none;padding:0;display:flex;flex-wrap:wrap;justify-content:center;gap:1rem 3rem}
+.valores li{font:300 clamp(1.5rem,3.2vw,2.3rem) var(--head)}
+
+/* Listas */
+#clube{background:var(--sand)}
+.painel-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(2rem,5vw,4rem)}
+.lista{list-style:none;padding:0}
+.lista li{padding:.55rem 0 .55rem 1.5rem;position:relative;border-bottom:1px solid rgba(23,48,47,.25)}
+.lista li::before{content:"";position:absolute;left:.2rem;top:1.15rem;width:.5rem;height:.5rem;border-radius:50%;background:var(--accent)}
+#beneficios{background:var(--cream)}
+
+/* Entrar */
+#entrar{background:var(--terra)}
+#entrar blockquote{font:300 clamp(1.4rem,3vw,2.1rem)/1.35 var(--head);margin-bottom:2rem}
+.acoes{display:flex;flex-wrap:wrap;gap:.8rem}
+
+footer{background:var(--ink);color:var(--cream);padding:2.5rem clamp(1.25rem,6vw,5rem)}
+footer .wrap{display:flex;flex-wrap:wrap;gap:1.5rem 3rem;align-items:center;justify-content:space-between}
+footer img{width:150px;filter:invert(1) brightness(1.6);opacity:.85}
+footer p{font-size:.95rem}
+footer .nome{font-family:var(--script);font-size:2.2rem;line-height:1}
+
+@media (max-width:820px){
+.hero{grid-template-columns:1fr;min-height:0}
+.hero-foto{min-height:0;aspect-ratio:4/5}
+.duo{grid-template-columns:1fr}
+.agenda li{grid-template-columns:1fr;gap:.1rem}
+.forma.arco,.forma.oval{max-width:360px}
+}
+</style>
+</head>
+<body>
+
+<header class="hero" id="inicio">
+  <div class="hero-text">
+    <img class="logo" src="img/logo.png" alt="Logotipo Graciosas – clube de leitura para mulheres">
+    <h1>Clube de Leitura Graciosas</h1>
+    <p class="assina">Adeline Nogueira</p>
+    <p class="intro">O Clube de Leitura Graciosas nasceu com o propósito de formar mulheres que crescem espiritualmente por meio da leitura intencional.</p>
+    <nav class="indice" aria-label="Índice do site">
+      <a class="btn solid" href="#agenda">Agenda 2027</a>
+      <a class="btn" href="#missao">Missão</a>
+      <a class="btn" href="#visao">Visão</a>
+      <a class="btn" href="#valores">Valores</a>
+      <a class="btn" href="#publico">Público-alvo</a>
+      <a class="btn" href="#como">Como funciona</a>
+      <a class="btn" href="#beneficios">Benefícios</a>
+      <a class="btn" href="#entrar">Entrar no grupo</a>
+    </nav>
+  </div>
+  <div class="hero-foto">
+    <img src="img/hero.jpg" alt="Adeline Nogueira segurando o livro Deixe-me ser mulher diante de uma estante">
+  </div>
+</header>
+
+<section id="agenda">
+  <div class="wrap">
+    <h2>Agenda 2027</h2>
+    <ul class="agenda">
+      <li class="recesso"><span class="mes">Janeiro/Fevereiro</span><span><span class="tipo">Recesso</span></span></li>
+      <li><span class="mes">Março/Abril</span><span><span class="tipo">Livro:</span>Pijama de Oncinha</span></li>
+      <li><span class="mes">Maio</span><span><span class="tipo">Curso:</span>Experiência do Lar – Turma 2 <small>(encontros on-line e presencial)</small></span></li>
+      <li class="destaque"><span class="mes">Junho</span><span><span class="tipo">Encontro presencial do clube:</span>Cafeteria</span></li>
+      <li><span class="mes">Julho</span><span><span class="tipo">Estudo:</span>Guardiões da Infância – Turma 4</span></li>
+      <li class="destaque"><span class="mes">Agosto</span><span><span class="tipo">Encontro presencial do clube:</span>Cafeteria</span></li>
+      <li><span class="mes">Setembro</span><span><span class="tipo">Livro:</span>A Força de Uma Mulher</span></li>
+      <li><span class="mes">Outubro</span><span><span class="tipo">Livro:</span>A Força de Uma Mulher <small>e</small> <span class="tipo">Conferência:</span>Guardiões da Infância</span></li>
+      <li class="destaque"><span class="mes">Novembro</span><span><span class="tipo">Encontro presencial do clube:</span>Cafeteria</span></li>
+      <li><span class="mes">Dezembro</span><span><span class="tipo">Estudo:</span>Mulher – Sua Verdadeira Feminilidade</span></li>
+    </ul>
+  </div>
+</section>
+
+<section id="missao">
+  <div class="wrap duo">
+    <div class="forma arco"><img src="img/livro.jpg" alt="Adeline com o livro do Clube de Leitura Graciosas" loading="lazy" style="object-position:55% 30%"></div>
+    <div>
+      <div class="bloco"><h2>Missão</h2><p>Formar mulheres constantes, maduras e edificadas pela leitura cristã.</p></div>
+      <div class="bloco" id="visao"><h2>Visão</h2><p>Ser um espaço seguro de crescimento espiritual, intelectual e emocional para mulheres e meninas que desejam desenvolver o hábito da leitura como estilo de vida.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="valores">
+  <div class="wrap">
+    <h2>Valores do clube</h2>
+    <ul class="valores">
+      <li>Graça</li><li>Constância</li><li>Profundidade</li><li>Comunhão</li><li>Transformação</li>
+    </ul>
+  </div>
+</section>
+
+<section id="clube">
+  <div class="wrap painel-grid">
+    <div id="publico"><h2>Público-alvo</h2>
+      <ul class="lista">
+        <li>Mulheres cristãs</li><li>Jovens e adolescentes</li><li>Mulheres que desejam criar disciplina espiritual</li><li>Líderes femininas</li><li>Mães que querem desenvolver o hábito da leitura</li>
+      </ul>
+    </div>
+    <div id="como"><h2>Como funciona</h2>
+      <ul class="lista">
+        <li>Encontros online (ou híbridos, se aplicável)</li><li>Cronograma mensal</li><li>Livro escolhido previamente</li><li>Estudo guiado com direcionamento</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="beneficios">
+  <div class="wrap duo" style="grid-template-columns:1.1fr .9fr">
+    <div><h2>Benefícios para as participantes</h2>
+      <ul class="lista">
+        <li>Desenvolvimento da disciplina espiritual</li><li>Crescimento emocional</li><li>Fortalecimento da fé</li><li>Organização de rotina de leitura</li><li>Comunhão e encorajamento</li>
+      </ul>
+    </div>
+    <div class="forma oval"><img src="img/estante.jpg" alt="Adeline apoiada sobre uma pilha de livros" loading="lazy" style="object-position:50% 25%"></div>
+  </div>
+</section>
+
+<section id="entrar">
+  <div class="wrap">
+    <blockquote>“O Graciosas não é apenas sobre ler livros. É sobre formar mulheres que permanecem.”</blockquote>
+    <div class="acoes">
+      <a class="btn solid" href="https://chat.whatsapp.com/D4Xzf8swbhY51ObXAEU2An" target="_blank" rel="noopener">Entrar no grupo do WhatsApp</a>
+      <a class="btn" href="https://www.instagram.com/clubedeleitura.graciosas/" target="_blank" rel="noopener">@clubedeleitura.graciosas</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <img src="img/logo.png" alt="Graciosas">
+    <div><p class="nome">Adeline Nogueira</p><p>Criadora e líder do clube</p></div>
+    <p><a href="tel:+5521983429233">(21) 98342-9233</a><br><a href="mailto:nogueiraadeline@gmail.com">nogueiraadeline@gmail.com</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
