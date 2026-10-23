@@ -9,6 +9,12 @@
 <meta property="og:description" content="Formar mulheres que crescem espiritualmente por meio da leitura intencional.">
 <meta property="og:image" content="img/hero.jpg">
 <link rel="icon" href="img/logo.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#B08868">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Graciosas">
+<link rel="apple-touch-icon" href="img/app-icon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Mrs+Saint+Delafield&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
@@ -39,6 +45,10 @@ section{padding:clamp(3.5rem,9vw,7rem) clamp(1.25rem,6vw,5rem)}
 .hero h1{font-size:clamp(2.6rem,6vw,4.8rem)}
 .assina{font-family:var(--script);font-size:clamp(2.6rem,5vw,3.6rem);line-height:1;margin-top:-.4rem}
 .hero p.intro{max-width:34rem}
+.install-app{align-self:flex-start;display:inline-flex;align-items:center;gap:.55rem;background:var(--ink);color:var(--cream);border-color:var(--ink);font-weight:600;box-shadow:0 5px 18px rgba(23,48,47,.16)}
+.install-app:hover{background:var(--cream);color:var(--ink)}
+.install-app .install-icon{font-size:1.15rem}
+.install-note{font-size:.88rem;max-width:32rem;opacity:.9}
 .indice{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:.4rem}
 .indice .btn{padding:.6rem 1.1rem}
 .hero-foto{position:relative;min-height:60vh}
@@ -123,6 +133,8 @@ footer .nome{font-family:var(--script);font-size:2.2rem;line-height:1}
     <h1>Clube de Leitura Graciosas</h1>
     <p class="assina">Adeline Nogueira</p>
     <p class="intro">O Clube de Leitura Graciosas nasceu com o propósito de formar mulheres que crescem espiritualmente por meio da leitura intencional.</p>
+    <button class="btn install-app" id="install-app" type="button"><span class="install-icon" aria-hidden="true">↧</span> BAIXE AQUI O APP</button>
+    <p class="install-note" id="install-note" hidden>Instale o Graciosas na tela inicial para acessar com facilidade.</p>
     <nav class="indice" aria-label="Índice do site">
       <a class="btn solid" href="#agenda-2026">Agenda 2026</a>
       <a class="btn solid" href="#agenda-2027">Agenda 2027</a>
@@ -274,5 +286,54 @@ footer .nome{font-family:var(--script);font-size:2.2rem;line-height:1}
   </div>
 </footer>
 
+
+<script>
+(() => {
+  const installButton = document.getElementById('install-app');
+  const installNote = document.getElementById('install-note');
+  let installPrompt = null;
+  const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent) && !window.MSStream;
+  const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+
+  if (isStandalone) {
+    installButton.innerHTML = '<span class="install-icon" aria-hidden="true">✓</span> APP INSTALADO';
+    installButton.disabled = true;
+    installButton.style.opacity = '.8';
+  }
+
+  window.addEventListener('beforeinstallprompt', (event) => {
+    event.preventDefault();
+    installPrompt = event;
+    installButton.hidden = false;
+  });
+
+  installButton.addEventListener('click', async () => {
+    if (isStandalone) return;
+    if (installPrompt) {
+      installPrompt.prompt();
+      await installPrompt.userChoice;
+      installPrompt = null;
+      return;
+    }
+    if (isIOS) {
+      alert('Para instalar no iPhone/iPad:\n1. Abra este site no Safari.\n2. Toque no botão Compartilhar.\n3. Escolha “Adicionar à Tela de Início”.\n4. Toque em “Adicionar”.');
+    } else {
+      alert('Para instalar o aplicativo:\n1. Abra este site no Google Chrome.\n2. Toque no menu ⋮.\n3. Escolha “Instalar app” ou “Adicionar à tela inicial”.\n4. Confirme a instalação.\n\nSe a opção não aparecer, atualize a página e tente novamente.');
+    }
+  });
+
+  window.addEventListener('appinstalled', () => {
+    installPrompt = null;
+    installButton.innerHTML = '<span class="install-icon" aria-hidden="true">✓</span> APP INSTALADO';
+    installButton.disabled = true;
+  });
+
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('./sw.js').catch((error) => console.warn('Não foi possível ativar o modo offline:', error));
+    });
+  }
+})();
+</script>
 </body>
 </html>
