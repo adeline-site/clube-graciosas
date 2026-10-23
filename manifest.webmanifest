@@ -1,0 +1,21 @@
+{
+  "id": "./",
+  "name": "Clube de Leitura Graciosas",
+  "short_name": "Graciosas",
+  "description": "Clube de leitura cristã para mulheres, criado por Adeline Nogueira.",
+  "lang": "pt-BR",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#F7EFE4",
+  "theme_color": "#B08868",
+  "icons": [
+    {
+      "src": "img/app-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
