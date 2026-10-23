@@ -12,10 +12,9 @@
   "theme_color": "#B08868",
   "icons": [
     {
-      "src": "img/app-icon.svg",
-      "sizes": "any",
-      "type": "image/svg+xml",
-      "purpose": "any maskable"
+      "src": "img/livro.jpg",
+      "type": "image/jpeg",
+      "purpose": "any"
     }
   ]
 }
