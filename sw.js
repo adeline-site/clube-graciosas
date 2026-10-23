@@ -1,4 +1,4 @@
-const CACHE_NAME = 'graciosas-pwa-v2';
+const CACHE_NAME = 'graciosas-pwa-v3';
 const CORE_FILES = [
   './',
   './index.html',
@@ -8,7 +8,7 @@ const CORE_FILES = [
   './img/app-icon.svg',
   './img/hero.jpg',
   './img/cafe.jpg',
-  './img/livro.jpg',
+  './img/logo-app.png',
   './img/estante.jpg',
   './img/selo-semente.png',
   './img/selo-constancia.png',
