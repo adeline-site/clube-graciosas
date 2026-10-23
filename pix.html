@@ -6,6 +6,12 @@
 <title>Pagar com Pix · Clube de Leitura Graciosas</title>
 <meta name="robots" content="noindex">
 <link rel="icon" href="img/logo.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#B08868">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Graciosas">
+<link rel="apple-touch-icon" href="img/app-icon.svg">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
 <style>
 :root{--terra:#B08868;--ink:#17302F;--cream:#F7EFE4;--head:'Poppins',system-ui,sans-serif;--body:'Montserrat',system-ui,sans-serif}
@@ -81,6 +87,13 @@ $('copiar').addEventListener('click', async () => {
   $('copiar').textContent = 'Código copiado!';
   setTimeout(() => $('copiar').textContent = 'Copiar código', 2500);
 });
+</script>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js').catch((error) => console.warn('Não foi possível ativar o modo offline:', error));
+  });
+}
 </script>
 </body>
 </html>
