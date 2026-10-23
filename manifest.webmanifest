@@ -12,7 +12,7 @@
   "theme_color": "#B08868",
   "icons": [
     {
-      "src": "img/livro.jpg",
+      "src": "img/logo-app.png",
       "type": "image/jpeg",
       "purpose": "any"
     }
