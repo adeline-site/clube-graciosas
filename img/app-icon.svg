@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="112" fill="#B08868"/>
+  <circle cx="256" cy="256" r="190" fill="#F7EFE4" opacity=".96"/>
+  <circle cx="256" cy="256" r="168" fill="none" stroke="#17302F" stroke-width="5" opacity=".55"/>
+  <path d="M256 112c-42 38-70 80-70 132 0 54 29 95 70 132 41-37 70-78 70-132 0-52-28-94-70-132Z" fill="#EBDCCB" stroke="#17302F" stroke-width="7"/>
+  <path d="M256 166v194" stroke="#17302F" stroke-width="6" stroke-linecap="round"/>
+  <path d="M256 249c-35-38-68-35-87-8 26 35 54 46 87 37m0-4c35-38 68-35 87-8-26 35-54 46-87 37" fill="none" stroke="#7A5338" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="256" y="414" text-anchor="middle" font-family="Georgia,serif" font-size="44" font-style="italic" fill="#17302F">Graciosas</text>
+</svg>
