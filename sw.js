@@ -1,4 +1,4 @@
-const CACHE_NAME = 'graciosas-pwa-v1';
+const CACHE_NAME = 'graciosas-pwa-v2';
 const CORE_FILES = [
   './',
   './index.html',
